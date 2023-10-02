@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://disn2kqpe0tkp"]
+
+[ext_resource type="PackedScene" uid="uid://dao02pqjyw86r" path="res://2p_coin.tscn" id="1_t3adv"]
+[ext_resource type="PackedScene" uid="uid://rmisfm470h1t" path="res://coin_pusher.glb" id="2_y5xkr"]
+
+[node name="CoinPusherRoot" type="Node3D"]
+
+[node name="Coins" type="Node3D" parent="."]
+
+[node name="coin1" parent="Coins" instance=ExtResource("1_t3adv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.77199, 13.4239, 0.752663)
+
+[node name="coin2" parent="Coins" instance=ExtResource("1_t3adv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.73287, 13.2713, -0.58944)
+
+[node name="coin3" parent="Coins" instance=ExtResource("1_t3adv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.80194, 13.4121, -1.41765)
+
+[node name="SceneSetup" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="SceneSetup"]
+transform = Transform3D(0.459704, -0.404129, 0.790792, 0, 0.890459, 0.455063, -0.888072, -0.209194, 0.409348, 4.37536, 13.8745, 5.06092)
+fov = 44.4
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SceneSetup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.97743, 16.6727, 0.166083)
+light_energy = 3.0
+light_indirect_energy = 2.944
+omni_range = 30.0
+
+[node name="TheMachine" parent="." instance=ExtResource("2_y5xkr")]
