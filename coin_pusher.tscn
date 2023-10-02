@@ -81,7 +81,7 @@ tracks/1/path = NodePath("AnimatedPusher2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(1, 4),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [Vector3(-2.3722, 6.87366, -0.068771), Vector3(-5.18672, 6.87366, -0.068771)]
@@ -93,7 +93,7 @@ tracks/2/path = NodePath("AnimatedPusher3:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(2, 5),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [Vector3(-2.37757, 6.87366, -1.29826), Vector3(-5.21064, 6.87366, -1.29826)]
