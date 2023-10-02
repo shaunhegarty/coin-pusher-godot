@@ -1,20 +1,126 @@
-[gd_scene load_steps=3 format=3 uid="uid://disn2kqpe0tkp"]
+[gd_scene load_steps=9 format=3 uid="uid://disn2kqpe0tkp"]
 
-[ext_resource type="PackedScene" uid="uid://dao02pqjyw86r" path="res://2p_coin.tscn" id="1_t3adv"]
-[ext_resource type="PackedScene" uid="uid://rmisfm470h1t" path="res://coin_pusher.glb" id="2_y5xkr"]
+[ext_resource type="PackedScene" uid="uid://dao02pqjyw86r" path="res://2p_coin.tscn" id="2_gph00"]
+[ext_resource type="PackedScene" uid="uid://rmisfm470h1t" path="res://coin_pusher.glb" id="3_2dwd0"]
+[ext_resource type="Script" path="res://pusher.gd" id="4_0q1ku"]
+
+[sub_resource type="GDScript" id="GDScript_uipy4"]
+script/source = "extends Node3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="Animation" id="Animation_4ba00"]
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedPusher:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.3722, 6.87366, 1.16893)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedPusher2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.3722, 6.87366, -0.068771)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedPusher3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.37757, 6.87366, -1.29826)]
+}
+
+[sub_resource type="Animation" id="Animation_rwl3x"]
+resource_name = "pusher_motion"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedPusher:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector3(-2.3722, 6.87366, 1.16893), Vector3(-5.18314, 6.87366, 1.16893)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedPusher2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector3(-2.3722, 6.87366, -0.068771), Vector3(-5.18672, 6.87366, -0.068771)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedPusher3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector3(-2.37757, 6.87366, -1.29826), Vector3(-5.21064, 6.87366, -1.29826)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_echt6"]
+_data = {
+"RESET": SubResource("Animation_4ba00"),
+"pusher_motion": SubResource("Animation_rwl3x")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_noqyw"]
+size = Vector3(4, 0.3, 1.2)
 
 [node name="CoinPusherRoot" type="Node3D"]
+script = SubResource("GDScript_uipy4")
 
 [node name="Coins" type="Node3D" parent="."]
 
-[node name="coin1" parent="Coins" instance=ExtResource("1_t3adv")]
+[node name="coin1" parent="Coins" instance=ExtResource("2_gph00")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.77199, 13.4239, 0.752663)
 
-[node name="coin2" parent="Coins" instance=ExtResource("1_t3adv")]
+[node name="coin2" parent="Coins" instance=ExtResource("2_gph00")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.73287, 13.2713, -0.58944)
 
-[node name="coin3" parent="Coins" instance=ExtResource("1_t3adv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.80194, 13.4121, -1.41765)
+[node name="coin3" parent="Coins" instance=ExtResource("2_gph00")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4004, 7.94381, 1.03469)
 
 [node name="SceneSetup" type="Node3D" parent="."]
 
@@ -28,4 +134,48 @@ light_energy = 3.0
 light_indirect_energy = 2.944
 omni_range = 30.0
 
-[node name="TheMachine" parent="." instance=ExtResource("2_y5xkr")]
+[node name="TheMachine" parent="." instance=ExtResource("3_2dwd0")]
+
+[node name="Pushers" type="Node3D" parent="TheMachine"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TheMachine/Pushers"]
+playback_process_mode = 0
+libraries = {
+"": SubResource("AnimationLibrary_echt6")
+}
+
+[node name="AnimatedPusher" type="AnimatableBody3D" parent="TheMachine/Pushers" node_paths=PackedStringArray("animation_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3722, 6.87366, 1.16893)
+script = ExtResource("4_0q1ku")
+animation_player = NodePath("../AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TheMachine/Pushers/AnimatedPusher"]
+shape = SubResource("BoxShape3D_noqyw")
+
+[node name="Pusher1" type="CSGBox3D" parent="TheMachine/Pushers/AnimatedPusher"]
+snap = 1e-06
+size = Vector3(4, 0.3, 1.2)
+
+[node name="AnimatedPusher2" type="AnimatableBody3D" parent="TheMachine/Pushers" node_paths=PackedStringArray("animation_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3722, 6.87366, -0.068771)
+script = ExtResource("4_0q1ku")
+animation_player = NodePath("../AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TheMachine/Pushers/AnimatedPusher2"]
+shape = SubResource("BoxShape3D_noqyw")
+
+[node name="Pusher1" type="CSGBox3D" parent="TheMachine/Pushers/AnimatedPusher2"]
+snap = 1e-06
+size = Vector3(4, 0.3, 1.2)
+
+[node name="AnimatedPusher3" type="AnimatableBody3D" parent="TheMachine/Pushers" node_paths=PackedStringArray("animation_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.37757, 6.87366, -1.29826)
+script = ExtResource("4_0q1ku")
+animation_player = NodePath("../AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TheMachine/Pushers/AnimatedPusher3"]
+shape = SubResource("BoxShape3D_noqyw")
+
+[node name="Pusher1" type="CSGBox3D" parent="TheMachine/Pushers/AnimatedPusher3"]
+snap = 1e-06
+size = Vector3(4, 0.3, 1.2)

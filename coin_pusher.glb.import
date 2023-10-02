@@ -34,7 +34,7 @@ _subresources={
 "generate/physics": true,
 "physics/shape_type": 2
 },
-"PATH:PachinkoSpindles": {
+"PATH:PachinkoSpindles_031": {
 "generate/physics": true,
 "physics/shape_type": 2
 }
