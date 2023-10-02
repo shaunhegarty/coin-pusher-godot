@@ -20,11 +20,11 @@ import/fbx/enabled=false
 
 [physics]
 
-common/physics_ticks_per_second=360
-3d/solver/solver_iterations=32
-3d/solver/contact_recycle_radius=0.001
-3d/solver/contact_max_separation=0.001
-3d/solver/contact_max_allowed_penetration=0.001
+3d/run_on_separate_thread=true
+common/physics_ticks_per_second=120
+3d/solver/contact_recycle_radius=0.005
+3d/solver/contact_max_separation=0.01
+3d/solver/contact_max_allowed_penetration=0.005
 
 [rendering]
 

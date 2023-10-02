@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://disn2kqpe0tkp"]
+[gd_scene load_steps=11 format=3 uid="uid://disn2kqpe0tkp"]
 
 [ext_resource type="PackedScene" uid="uid://dao02pqjyw86r" path="res://2p_coin.tscn" id="2_gph00"]
 [ext_resource type="PackedScene" uid="uid://rmisfm470h1t" path="res://coin_pusher.glb" id="3_2dwd0"]
 [ext_resource type="Script" path="res://pusher.gd" id="4_0q1ku"]
+[ext_resource type="Script" path="res://coin_spawner.gd" id="4_4cjm0"]
 
 [sub_resource type="GDScript" id="GDScript_uipy4"]
 script/source = "extends Node3D
@@ -108,6 +109,9 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_noqyw"]
 size = Vector3(4, 0.3, 1.2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_6uc3a"]
+size = Vector3(0.5, 1, 3)
+
 [node name="CoinPusherRoot" type="Node3D"]
 script = SubResource("GDScript_uipy4")
 
@@ -126,7 +130,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4004, 7.94381, 1.03469)
 
 [node name="Camera3D" type="Camera3D" parent="SceneSetup"]
 transform = Transform3D(0.459704, -0.404129, 0.790792, 0, 0.890459, 0.455063, -0.888072, -0.209194, 0.409348, 4.37536, 13.8745, 5.06092)
-fov = 44.4
+fov = 67.1
 
 [node name="OmniLight3D" type="OmniLight3D" parent="SceneSetup"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.97743, 16.6727, 0.166083)
@@ -179,3 +183,15 @@ shape = SubResource("BoxShape3D_noqyw")
 [node name="Pusher1" type="CSGBox3D" parent="TheMachine/Pushers/AnimatedPusher3"]
 snap = 1e-06
 size = Vector3(4, 0.3, 1.2)
+
+[node name="CoinSpawner" type="Area3D" parent="." node_paths=PackedStringArray("collision_shape")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5117, 13.5272, 0)
+script = ExtResource("4_4cjm0")
+coin_scene = ExtResource("2_gph00")
+collision_shape = NodePath("CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CoinSpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.245946, 0, 0)
+shape = SubResource("BoxShape3D_6uc3a")
+
+[connection signal="input_event" from="CoinSpawner" to="CoinSpawner" method="_on_input_event"]
