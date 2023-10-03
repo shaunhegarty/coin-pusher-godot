@@ -97,6 +97,7 @@ func store_game_state():
 
 func load_stored_game_state():
 	reset()
+	coins_in_play_area.coins_in_play.clear()
 	var game_state = ResourceLoader.load(get_level_path(GameController.level_to_load))
 	coin_spawner.load_coins(game_state)
 
