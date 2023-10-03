@@ -3,11 +3,12 @@
 [ext_resource type="Script" path="res://Core/UI/ui_manager.gd" id="1_gerb2"]
 [ext_resource type="Theme" uid="uid://dto2dgjbhtenc" path="res://Assets/Themes/coin_pusher.tres" id="2_lr237"]
 
-[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("coin_count_label", "coins_in_play_label", "collect_state_button")]
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("coin_count_label", "coins_in_play_label", "collect_state_button", "reload_state_button")]
 script = ExtResource("1_gerb2")
 coin_count_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/CoinCounter")
 coins_in_play_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/CoinsInPlay")
 collect_state_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/CollectStateButton")
+reload_state_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/ReloadStateButton")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 offset_right = 40.0
@@ -33,3 +34,8 @@ text = "Coins in Play: 0"
 [node name="CollectStateButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Collect State"
+
+[node name="ReloadStateButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+disabled = true
+text = "Reload State"
