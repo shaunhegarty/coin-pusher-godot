@@ -1,12 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://disn2kqpe0tkp"]
+[gd_scene load_steps=13 format=3 uid="uid://disn2kqpe0tkp"]
 
 [ext_resource type="PackedScene" uid="uid://rmisfm470h1t" path="res://Assets/Models/coin_pusher.glb" id="1_xj4bp"]
 [ext_resource type="Script" path="res://Core/Pusher/pusher_animation.gd" id="2_83aia"]
 [ext_resource type="Script" path="res://Core/Pusher/coin_spawner.gd" id="3_35dhq"]
 [ext_resource type="PackedScene" uid="uid://dao02pqjyw86r" path="res://Core/Coin/2p_coin.tscn" id="4_bvpd3"]
 [ext_resource type="Script" path="res://Core/Pusher/coins_in_play.gd" id="5_vsach"]
-[ext_resource type="Script" path="res://Core/UI/ui_manager.gd" id="6_fwldi"]
-[ext_resource type="Theme" uid="uid://dto2dgjbhtenc" path="res://Assets/Themes/coin_pusher.tres" id="7_q6isa"]
+[ext_resource type="PackedScene" uid="uid://b58r4k0xhdckl" path="res://Core/UI/ui.tscn" id="6_rowxj"]
 
 [sub_resource type="Animation" id="Animation_4ba00"]
 length = 6.0
@@ -177,35 +176,6 @@ script = ExtResource("5_vsach")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33533, 7.06041, 0)
 shape = SubResource("BoxShape3D_p5uvh")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("coin_count_label", "coins_in_play_label", "collect_state_button")]
-script = ExtResource("6_fwldi")
-coin_count_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/CoinCounter")
-coins_in_play_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/CoinsInPlay")
-collect_state_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/CollectStateButton")
-
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
-theme = ExtResource("7_q6isa")
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
-layout_mode = 2
-theme = ExtResource("7_q6isa")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="CoinCounter" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("7_q6isa")
-text = "Coins Spawned: 0"
-
-[node name="CoinsInPlay" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Coins in Play: 0"
-
-[node name="CollectStateButton" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Collect State"
+[node name="UI" parent="." instance=ExtResource("6_rowxj")]
 
 [connection signal="input_event" from="CoinSpawner" to="CoinSpawner" method="_on_input_event"]
