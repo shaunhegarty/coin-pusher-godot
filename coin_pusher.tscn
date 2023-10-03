@@ -1,23 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://disn2kqpe0tkp"]
+[gd_scene load_steps=10 format=3 uid="uid://disn2kqpe0tkp"]
 
 [ext_resource type="PackedScene" uid="uid://dao02pqjyw86r" path="res://2p_coin.tscn" id="2_gph00"]
 [ext_resource type="PackedScene" uid="uid://rmisfm470h1t" path="res://coin_pusher.glb" id="3_2dwd0"]
 [ext_resource type="Script" path="res://pusher.gd" id="4_0q1ku"]
 [ext_resource type="Script" path="res://coin_spawner.gd" id="4_4cjm0"]
-
-[sub_resource type="GDScript" id="GDScript_uipy4"]
-script/source = "extends Node3D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-"
 
 [sub_resource type="Animation" id="Animation_4ba00"]
 length = 6.0
@@ -29,10 +15,10 @@ tracks/0/path = NodePath("AnimatedPusher:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [Vector3(-2.3722, 6.87366, 1.16893)]
+"values": [Vector3(-3.51995, 6.87366, 1.16893), Vector3(-5.35814, 6.87366, 1.16893)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -41,10 +27,10 @@ tracks/1/path = NodePath("AnimatedPusher2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(1, 4),
+"transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [Vector3(-2.3722, 6.87366, -0.068771)]
+"values": [Vector3(-3.51091, 6.87366, -0.068771), Vector3(-5.3569, 6.87366, -0.068771)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -53,10 +39,10 @@ tracks/2/path = NodePath("AnimatedPusher3:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(2, 5),
+"transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [Vector3(-2.37757, 6.87366, -1.29826)]
+"values": [Vector3(-3.51803, 6.87366, -1.29826), Vector3(-5.35644, 6.87366, -1.29826)]
 }
 
 [sub_resource type="Animation" id="Animation_rwl3x"]
@@ -73,7 +59,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [Vector3(-2.3722, 6.87366, 1.16893), Vector3(-5.18314, 6.87366, 1.16893)]
+"values": [Vector3(-3.54751, 6.87366, 1.16893), Vector3(-5.18314, 6.87366, 1.16893)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -85,7 +71,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(1, 4),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [Vector3(-2.3722, 6.87366, -0.068771), Vector3(-5.18672, 6.87366, -0.068771)]
+"values": [Vector3(-3.54918, 6.87366, -0.068771), Vector3(-5.18672, 6.87366, -0.068771)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -97,7 +83,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(2, 5),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [Vector3(-2.37757, 6.87366, -1.29826), Vector3(-5.21064, 6.87366, -1.29826)]
+"values": [Vector3(-3.55472, 6.87366, -1.29826), Vector3(-5.21064, 6.87366, -1.29826)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_echt6"]
@@ -113,24 +99,12 @@ size = Vector3(4, 0.3, 1.2)
 size = Vector3(0.5, 1, 3)
 
 [node name="CoinPusherRoot" type="Node3D"]
-script = SubResource("GDScript_uipy4")
-
-[node name="Coins" type="Node3D" parent="."]
-
-[node name="coin1" parent="Coins" instance=ExtResource("2_gph00")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.77199, 13.4239, 0.752663)
-
-[node name="coin2" parent="Coins" instance=ExtResource("2_gph00")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.73287, 13.2713, -0.58944)
-
-[node name="coin3" parent="Coins" instance=ExtResource("2_gph00")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4004, 7.94381, 1.03469)
 
 [node name="SceneSetup" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="SceneSetup"]
-transform = Transform3D(0.459704, -0.404129, 0.790792, 0, 0.890459, 0.455063, -0.888072, -0.209194, 0.409348, 4.37536, 13.8745, 5.06092)
-fov = 67.1
+transform = Transform3D(0.00326382, -0.446336, 0.89486, -3.19011e-05, 0.894864, 0.446338, -0.999995, -0.00148532, 0.00290644, 8.58187, 15.4496, -0.164331)
+fov = 45.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="SceneSetup"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.97743, 16.6727, 0.166083)
@@ -141,6 +115,7 @@ omni_range = 30.0
 [node name="TheMachine" parent="." instance=ExtResource("3_2dwd0")]
 
 [node name="Pushers" type="Node3D" parent="TheMachine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.500154, 0, 0.0831006)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TheMachine/Pushers"]
 playback_process_mode = 0
@@ -149,7 +124,7 @@ libraries = {
 }
 
 [node name="AnimatedPusher" type="AnimatableBody3D" parent="TheMachine/Pushers" node_paths=PackedStringArray("animation_player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3722, 6.87366, 1.16893)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.51995, 6.87366, 1.16893)
 script = ExtResource("4_0q1ku")
 animation_player = NodePath("../AnimationPlayer")
 
@@ -161,7 +136,7 @@ snap = 1e-06
 size = Vector3(4, 0.3, 1.2)
 
 [node name="AnimatedPusher2" type="AnimatableBody3D" parent="TheMachine/Pushers" node_paths=PackedStringArray("animation_player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3722, 6.87366, -0.068771)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.92113, 6.87366, -0.068771)
 script = ExtResource("4_0q1ku")
 animation_player = NodePath("../AnimationPlayer")
 
@@ -173,7 +148,7 @@ snap = 1e-06
 size = Vector3(4, 0.3, 1.2)
 
 [node name="AnimatedPusher3" type="AnimatableBody3D" parent="TheMachine/Pushers" node_paths=PackedStringArray("animation_player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.37757, 6.87366, -1.29826)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9479, 6.87366, -1.29826)
 script = ExtResource("4_0q1ku")
 animation_player = NodePath("../AnimationPlayer")
 
