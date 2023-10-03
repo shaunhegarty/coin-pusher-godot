@@ -11,12 +11,12 @@ config_version=5
 [application]
 
 config/name="CoinPusher"
-run/main_scene="res://coin_pusher.tscn"
+run/main_scene="res://Core/Pusher/coin_pusher.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 
 [autoload]
 
-GameController="*res://game_controller.gd"
+GameController="*res://Core/Global/game_controller.gd"
 
 [dotnet]
 
