@@ -64,14 +64,16 @@ func increment_coin_count():
 	coin_counted.emit()
 
 
-func increment_coins_in_play():
+func increment_coins_in_play(skip_signal = false):
 	coins_in_play += 1
-	coins_in_play_changed.emit()
+	if not skip_signal:
+		coins_in_play_changed.emit()
 
 
-func decrement_coins_in_play():
+func decrement_coins_in_play(skip_signal = false):
 	coins_in_play -= 1
-	coins_in_play_changed.emit()
+	if not skip_signal:
+		coins_in_play_changed.emit()
 
 
 var base_path = "Assets/Levels/"
@@ -96,8 +98,12 @@ func store_game_state():
 func load_stored_game_state():
 	reset()
 	var game_state = ResourceLoader.load(get_level_path(GameController.level_to_load))
-	print("Loaded level %s" % GameController.level_to_load)
 	coin_spawner.load_coins(game_state)
+
+	print("Loaded level %s" % GameController.level_to_load)
+
+	coins_in_play_area.force_recount()
+
 	animation_player.play("RESET")
 	animation_player.seek(game_state.animation_time, true)
 	animation_player.play("pusher_motion", 5)

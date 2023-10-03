@@ -10,6 +10,14 @@ func _ready():
 	body_exited.connect(coin_out_of_play)
 
 
+func force_recount():
+	coins_in_play.clear()
+	GameController.coins_in_play = 0
+	for body in get_overlapping_bodies():
+		coins_in_play.append(body)
+		GameController.increment_coins_in_play(true)
+
+
 func coin_in_play(body: Node) -> void:
 	if body.is_in_group("coin"):
 		coins_in_play.append(body)
