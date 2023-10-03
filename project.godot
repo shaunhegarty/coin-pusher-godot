@@ -29,7 +29,9 @@ import/fbx/enabled=false
 [physics]
 
 3d/run_on_separate_thread=true
-common/physics_ticks_per_second=90
+common/physics_ticks_per_second=120
+3d/sleep_threshold_linear=0.002
+3d/solver/solver_iterations=8
 3d/solver/contact_recycle_radius=0.005
 3d/solver/contact_max_separation=0.005
 3d/solver/contact_max_allowed_penetration=0.001

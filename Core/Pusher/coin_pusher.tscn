@@ -17,10 +17,10 @@ tracks/0/path = NodePath("AnimatedPusher:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(-2, -2),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
 "update": 0,
-"values": [Vector3(-3.51995, 6.87366, 1.16893), Vector3(-5.35814, 6.87366, 1.16893)]
+"values": [Vector3(-3.51995, 6.87366, 1.16893)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -29,10 +29,10 @@ tracks/1/path = NodePath("AnimatedPusher2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1, 4),
-"transitions": PackedFloat32Array(-2, -2),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
 "update": 0,
-"values": [Vector3(-3.51091, 6.87366, -0.068771), Vector3(-5.3569, 6.87366, -0.068771)]
+"values": [Vector3(-3.51091, 6.87366, -0.068771)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -41,15 +41,15 @@ tracks/2/path = NodePath("AnimatedPusher3:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(2, 5),
-"transitions": PackedFloat32Array(-2, -2),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
 "update": 0,
-"values": [Vector3(-3.51803, 6.87366, -1.29826), Vector3(-5.35644, 6.87366, -1.29826)]
+"values": [Vector3(-3.51803, 6.87366, -1.29826)]
 }
 
 [sub_resource type="Animation" id="Animation_rwl3x"]
 resource_name = "pusher_motion"
-length = 6.0
+length = 8.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -58,7 +58,7 @@ tracks/0/path = NodePath("AnimatedPusher:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 4),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [Vector3(-3.54751, 6.87366, 1.16893), Vector3(-5.18314, 6.87366, 1.16893)]
@@ -70,7 +70,7 @@ tracks/1/path = NodePath("AnimatedPusher2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1, 4),
+"times": PackedFloat32Array(1.5, 5.5),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [Vector3(-3.54918, 6.87366, -0.068771), Vector3(-5.18672, 6.87366, -0.068771)]
@@ -82,7 +82,7 @@ tracks/2/path = NodePath("AnimatedPusher3:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(2, 5),
+"times": PackedFloat32Array(2.8, 6.9),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [Vector3(-3.55472, 6.87366, -1.29826), Vector3(-5.21064, 6.87366, -1.29826)]
@@ -140,7 +140,7 @@ snap = 1e-06
 size = Vector3(4, 0.3, 1.2)
 
 [node name="AnimatedPusher2" type="AnimatableBody3D" parent="TheMachine/Pushers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.92113, 6.87366, -0.068771)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.51091, 6.87366, -0.068771)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TheMachine/Pushers/AnimatedPusher2"]
 shape = SubResource("BoxShape3D_noqyw")
@@ -150,7 +150,7 @@ snap = 1e-06
 size = Vector3(4, 0.3, 1.2)
 
 [node name="AnimatedPusher3" type="AnimatableBody3D" parent="TheMachine/Pushers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9479, 6.87366, -1.29826)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.51803, 6.87366, -1.29826)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TheMachine/Pushers/AnimatedPusher3"]
 shape = SubResource("BoxShape3D_noqyw")

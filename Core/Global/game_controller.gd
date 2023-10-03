@@ -83,4 +83,6 @@ func store_game_state():
 
 func load_stored_game_state():
 	coin_spawner.load_coins(stored_game_state)
+	animation_player.play("RESET")
 	animation_player.seek(stored_game_state.animation_time, true)
+	animation_player.play("pusher_motion", 5)
