@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://disn2kqpe0tkp"]
+[gd_scene load_steps=14 format=3 uid="uid://disn2kqpe0tkp"]
 
 [ext_resource type="PackedScene" uid="uid://dao02pqjyw86r" path="res://2p_coin.tscn" id="2_gph00"]
 [ext_resource type="PackedScene" uid="uid://rmisfm470h1t" path="res://coin_pusher.glb" id="3_2dwd0"]
 [ext_resource type="Script" path="res://pusher.gd" id="4_0q1ku"]
 [ext_resource type="Script" path="res://coin_spawner.gd" id="4_4cjm0"]
+[ext_resource type="Theme" uid="uid://dto2dgjbhtenc" path="res://coin_pusher.tres" id="5_313km"]
+[ext_resource type="Script" path="res://coins_in_play.gd" id="5_nblno"]
+[ext_resource type="Script" path="res://ui_manager.gd" id="5_nqfka"]
 
 [sub_resource type="Animation" id="Animation_4ba00"]
 length = 6.0
@@ -96,7 +99,10 @@ _data = {
 size = Vector3(4, 0.3, 1.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6uc3a"]
-size = Vector3(0.5, 1, 3)
+size = Vector3(0.3, 1, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p5uvh"]
+size = Vector3(5, 1, 6)
 
 [node name="CoinPusherRoot" type="Node3D"]
 
@@ -104,7 +110,7 @@ size = Vector3(0.5, 1, 3)
 
 [node name="Camera3D" type="Camera3D" parent="SceneSetup"]
 transform = Transform3D(0.00326382, -0.446336, 0.89486, -3.19011e-05, 0.894864, 0.446338, -0.999995, -0.00148532, 0.00290644, 8.58187, 15.4496, -0.164331)
-fov = 45.0
+fov = 35.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="SceneSetup"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.97743, 16.6727, 0.166083)
@@ -166,7 +172,40 @@ coin_scene = ExtResource("2_gph00")
 collision_shape = NodePath("CollisionShape3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CoinSpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.245946, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.245946, -0.734982, 0)
 shape = SubResource("BoxShape3D_6uc3a")
+
+[node name="CoinsInPlayArea" type="Area3D" parent="."]
+script = ExtResource("5_nblno")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CoinsInPlayArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33533, 7.06041, 0)
+shape = SubResource("BoxShape3D_p5uvh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("coin_count_label", "coins_in_play_label")]
+script = ExtResource("5_nqfka")
+coin_count_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/CoinCounter")
+coins_in_play_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/CoinsInPlay")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("5_313km")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+theme = ExtResource("5_313km")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="CoinCounter" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_313km")
+text = "Coins Spawned: 0"
+
+[node name="CoinsInPlay" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Coins in Play: 0"
 
 [connection signal="input_event" from="CoinSpawner" to="CoinSpawner" method="_on_input_event"]

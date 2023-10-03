@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dto2dgjbhtenc"]
+
+[sub_resource type="SystemFont" id="SystemFont_4axlu"]
+font_names = PackedStringArray("Cambria")
+
+[resource]
+Label/fonts/font = SubResource("SystemFont_4axlu")
+MarginContainer/constants/margin_bottom = 8
+MarginContainer/constants/margin_left = 8
+MarginContainer/constants/margin_right = 8
+MarginContainer/constants/margin_top = 8

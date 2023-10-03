@@ -10,7 +10,7 @@ margin = 0.001
 height = 0.02
 radius = 0.12
 
-[node name="CoinBody" type="RigidBody3D"]
+[node name="CoinBody" type="RigidBody3D" groups=["coin"]]
 physics_material_override = SubResource("PhysicsMaterial_nxogv")
 
 [node name="coin" parent="." instance=ExtResource("1_sd4qk")]
