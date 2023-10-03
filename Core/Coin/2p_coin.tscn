@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dao02pqjyw86r"]
 
-[ext_resource type="PackedScene" uid="uid://d18hm6qrx8ucb" path="res://coin.glb" id="1_sd4qk"]
+[ext_resource type="PackedScene" uid="uid://d18hm6qrx8ucb" path="res://Assets/Models/coin.glb" id="1_sd4qk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nxogv"]
 friction = 0.3
