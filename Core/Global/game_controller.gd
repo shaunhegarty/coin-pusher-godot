@@ -66,7 +66,10 @@ func decrement_coins_in_play():
 	coins_in_play_changed.emit()
 
 
-var stored_game_state: GameState
+var base_path = "Assets/Levels/"
+
+func get_level_path(number: int):
+	return "%sgame_%d.tres" % [base_path, number]
 
 
 func store_game_state():
@@ -76,13 +79,14 @@ func store_game_state():
 		game_state.coin_positions.append(coin.global_position)
 		game_state.coin_rotations.append(coin.global_rotation)
 
-	stored_game_state = game_state
-
+	var save_status = ResourceSaver.save(game_state, get_level_path(1))
+	print(save_status)
 	game_state_stored.emit()
 
 
 func load_stored_game_state():
-	coin_spawner.load_coins(stored_game_state)
+	var game_state = ResourceLoader.load(get_level_path(1))
+	coin_spawner.load_coins(game_state)
 	animation_player.play("RESET")
-	animation_player.seek(stored_game_state.animation_time, true)
+	animation_player.seek(game_state.animation_time, true)
 	animation_player.play("pusher_motion", 5)

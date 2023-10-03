@@ -1,5 +1,5 @@
-class_name GameState extends RefCounted
+class_name GameState extends Resource
 
-var animation_time: float
-var coin_positions: Array[Vector3] = []
-var coin_rotations: Array[Vector3] = []
+@export var animation_time: float
+@export var coin_positions: Array[Vector3] = []
+@export var coin_rotations: Array[Vector3] = []
