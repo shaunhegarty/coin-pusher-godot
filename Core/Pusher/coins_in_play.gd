@@ -14,8 +14,9 @@ func force_recount():
 	coins_in_play.clear()
 	GameController.coins_in_play = 0
 	for body in get_overlapping_bodies():
-		coins_in_play.append(body)
-		GameController.increment_coins_in_play(true)
+		if body.is_in_group("coin"):
+			coins_in_play.append(body)
+			GameController.increment_coins_in_play(true)
 
 
 func coin_in_play(body: Node) -> void:
