@@ -4,13 +4,15 @@ class_name UiManager extends CanvasLayer
 @export var coins_in_play_label: Label
 @export var collect_state_button: Button
 @export var reload_state_button: Button
+@export var collect_state_for_level_spinner: SpinBox
+@export var reload_state_for_level_spinner: SpinBox
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GameController.coin_counted.connect(update_coin_count)
 	GameController.coins_in_play_changed.connect(update_coins_in_play)
-	GameController.game_state_stored.connect(enable_coin_reload)
+	GameController.level_count_changed.connect(update_level_spinners)
 
 	if not GameController.is_registration_complete:
 		print("Nearly Ready")
@@ -20,6 +22,15 @@ func _ready():
 	collect_state_button.pressed.connect(GameController.store_game_state)
 	reload_state_button.pressed.connect(GameController.load_stored_game_state)
 
+	update_level_spinners()
+
+	collect_state_for_level_spinner.value_changed.connect(GameController.set_level_to_save)
+	reload_state_for_level_spinner.value_changed.connect(GameController.set_level_to_load)
+
+
+func update_level_spinners():
+	collect_state_for_level_spinner.max_value = GameController.level_count + 1
+	reload_state_for_level_spinner.max_value = GameController.level_count
 
 
 func update_coin_count():
@@ -28,8 +39,3 @@ func update_coin_count():
 
 func update_coins_in_play():
 	coins_in_play_label.text = "Coins In Play: %s" % GameController.coins_in_play
-
-
-func enable_coin_reload():
-	print("enable coin reload")
-	reload_state_button.disabled = false

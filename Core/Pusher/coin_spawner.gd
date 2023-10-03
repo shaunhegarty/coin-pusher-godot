@@ -47,7 +47,6 @@ func load_coins(state: GameState):
 
 
 func delete_all_coins():
-	print("kill em all")
 	get_tree().call_group("coin", "queue_free")
 
 
@@ -57,6 +56,6 @@ func _on_input_event(
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			for i in range(10):
-				spawn_coin_randomly()	
+				spawn_coin_randomly()
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			delete_all_coins()

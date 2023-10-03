@@ -3,13 +3,13 @@
 [sub_resource type="SystemFont" id="SystemFont_soukn"]
 font_names = PackedStringArray("Ebrima")
 
-[sub_resource type="SystemFont" id="SystemFont_4axlu"]
-font_names = PackedStringArray("Cambria")
+[sub_resource type="SystemFont" id="SystemFont_v1eo2"]
+font_names = PackedStringArray("Ebrima")
 
 [resource]
 Button/fonts/font = SubResource("SystemFont_soukn")
-Label/fonts/font = SubResource("SystemFont_4axlu")
-MarginContainer/constants/margin_bottom = 8
-MarginContainer/constants/margin_left = 8
-MarginContainer/constants/margin_right = 8
-MarginContainer/constants/margin_top = 8
+Label/fonts/font = SubResource("SystemFont_v1eo2")
+MarginContainer/constants/margin_bottom = 12
+MarginContainer/constants/margin_left = 12
+MarginContainer/constants/margin_right = 12
+MarginContainer/constants/margin_top = 12
