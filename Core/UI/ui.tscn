@@ -1,61 +1,131 @@
-[gd_scene load_steps=3 format=3 uid="uid://b58r4k0xhdckl"]
+[gd_scene load_steps=4 format=3 uid="uid://b58r4k0xhdckl"]
 
 [ext_resource type="Script" path="res://Core/UI/ui_manager.gd" id="1_gerb2"]
 [ext_resource type="Theme" uid="uid://dto2dgjbhtenc" path="res://Assets/Themes/coin_pusher.tres" id="2_lr237"]
+[ext_resource type="Script" path="res://Core/UI/game_info.gd" id="3_wp2bd"]
 
 [node name="UI" type="CanvasLayer" node_paths=PackedStringArray("coin_count_label", "coins_in_play_label", "collect_state_button", "reload_state_button", "collect_state_for_level_spinner", "reload_state_for_level_spinner")]
 script = ExtResource("1_gerb2")
-coin_count_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/CoinCounter")
-coins_in_play_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/CoinsInPlay")
-collect_state_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/CollectStateContainer/CollectStateButton")
-reload_state_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/LoadLevelContainer/LoadLevelButton")
-collect_state_for_level_spinner = NodePath("PanelContainer/MarginContainer/VBoxContainer/CollectStateContainer/CollectStateForLevelSpinner")
-reload_state_for_level_spinner = NodePath("PanelContainer/MarginContainer/VBoxContainer/LoadLevelContainer/LoadLevelSpinner")
+coin_count_label = NodePath("DevPanel/MarginContainer/VBoxContainer/CoinCounter")
+coins_in_play_label = NodePath("DevPanel/MarginContainer/VBoxContainer/CoinsInPlay")
+collect_state_button = NodePath("DevPanel/MarginContainer/VBoxContainer/CollectStateContainer/CollectStateButton")
+reload_state_button = NodePath("DevPanel/MarginContainer/VBoxContainer/LoadLevelContainer/LoadLevelButton")
+collect_state_for_level_spinner = NodePath("DevPanel/MarginContainer/VBoxContainer/CollectStateContainer/CollectStateForLevelSpinner")
+reload_state_for_level_spinner = NodePath("DevPanel/MarginContainer/VBoxContainer/LoadLevelContainer/LoadLevelSpinner")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="DevPanel" type="PanelContainer" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("2_lr237")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="DevPanel"]
 layout_mode = 2
 theme = ExtResource("2_lr237")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="DevPanel/MarginContainer"]
 layout_mode = 2
 
-[node name="CoinCounter" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="CoinCounter" type="Label" parent="DevPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_lr237")
 text = "Coins Spawned: 0"
 
-[node name="CoinsInPlay" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="CoinsInPlay" type="Label" parent="DevPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Coins in Play: 0"
 
-[node name="CollectStateContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="CollectStateContainer" type="HBoxContainer" parent="DevPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="CollectStateButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/CollectStateContainer"]
+[node name="CollectStateButton" type="Button" parent="DevPanel/MarginContainer/VBoxContainer/CollectStateContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Collect State"
 
-[node name="CollectStateForLevelSpinner" type="SpinBox" parent="PanelContainer/MarginContainer/VBoxContainer/CollectStateContainer"]
+[node name="CollectStateForLevelSpinner" type="SpinBox" parent="DevPanel/MarginContainer/VBoxContainer/CollectStateContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 min_value = 1.0
 value = 1.0
 
-[node name="LoadLevelContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="LoadLevelContainer" type="HBoxContainer" parent="DevPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="LoadLevelButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/LoadLevelContainer"]
+[node name="LoadLevelButton" type="Button" parent="DevPanel/MarginContainer/VBoxContainer/LoadLevelContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Load Level"
 
-[node name="LoadLevelSpinner" type="SpinBox" parent="PanelContainer/MarginContainer/VBoxContainer/LoadLevelContainer"]
+[node name="LoadLevelSpinner" type="SpinBox" parent="DevPanel/MarginContainer/VBoxContainer/LoadLevelContainer"]
 layout_mode = 2
 min_value = 1.0
 value = 1.0
+
+[node name="GamePanel" type="PanelContainer" parent="." node_paths=PackedStringArray("pocket_value", "spent_value", "earned_value", "profit_value")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme = ExtResource("2_lr237")
+script = ExtResource("3_wp2bd")
+pocket_value = NodePath("MarginContainer/VBoxContainer/Pocket/PocketValue")
+spent_value = NodePath("MarginContainer/VBoxContainer/Spent/SpentValue")
+earned_value = NodePath("MarginContainer/VBoxContainer/Earned/EarnedValue")
+profit_value = NodePath("MarginContainer/VBoxContainer/Profit/ProfitValue")
+
+[node name="MarginContainer" type="MarginContainer" parent="GamePanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GamePanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Pocket" type="HBoxContainer" parent="GamePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PocketLabel" type="Label" parent="GamePanel/MarginContainer/VBoxContainer/Pocket"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Pocket: "
+
+[node name="PocketValue" type="Label" parent="GamePanel/MarginContainer/VBoxContainer/Pocket"]
+layout_mode = 2
+text = "10p"
+
+[node name="Spent" type="HBoxContainer" parent="GamePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SpentLabel" type="Label" parent="GamePanel/MarginContainer/VBoxContainer/Spent"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Spent:"
+
+[node name="SpentValue" type="Label" parent="GamePanel/MarginContainer/VBoxContainer/Spent"]
+layout_mode = 2
+text = "0p"
+
+[node name="Earned" type="HBoxContainer" parent="GamePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="EarnedLabel" type="Label" parent="GamePanel/MarginContainer/VBoxContainer/Earned"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Earned: "
+
+[node name="EarnedValue" type="Label" parent="GamePanel/MarginContainer/VBoxContainer/Earned"]
+layout_mode = 2
+text = "0p"
+
+[node name="Profit" type="HBoxContainer" parent="GamePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ProfitLabel" type="Label" parent="GamePanel/MarginContainer/VBoxContainer/Profit"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Profit: "
+
+[node name="ProfitValue" type="Label" parent="GamePanel/MarginContainer/VBoxContainer/Profit"]
+layout_mode = 2
+text = "0p"
+horizontal_alignment = 2

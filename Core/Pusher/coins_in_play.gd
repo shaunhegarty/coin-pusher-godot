@@ -29,3 +29,4 @@ func coin_out_of_play(body: Node) -> void:
 	if body.is_in_group("coin"):
 		coins_in_play.erase(body)
 		GameController.decrement_coins_in_play()
+		body.queue_free()

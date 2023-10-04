@@ -2,6 +2,7 @@ extends Node
 
 signal coin_spawned
 signal coin_counted
+signal coin_collected
 signal coins_in_play_changed
 signal game_state_stored
 
@@ -22,6 +23,8 @@ var level_count: int
 var level_to_save: int = 1
 var level_to_load: int = 1
 
+var game: Game
+
 
 func _ready():
 	coin_spawned.connect(increment_coin_count)
@@ -29,6 +32,15 @@ func _ready():
 	game_state_stored.connect(count_levels)
 
 	count_levels()
+
+	game = Game.new()
+	coin_spawned.connect(game.spend)
+
+
+func new_game():
+	load_stored_game_state()
+	game = Game.new()
+	game.start()
 
 
 func register_animation_player(pusher_animation_player: AnimationPlayer):
