@@ -123,7 +123,8 @@ fov = 35.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.97743, 16.6727, 0.166083)
 light_energy = 3.0
 light_indirect_energy = 2.944
-omni_range = 30.0
+omni_range = 64.592
+omni_attenuation = 0.435275
 
 [node name="TheMachine" parent="." instance=ExtResource("1_xj4bp")]
 

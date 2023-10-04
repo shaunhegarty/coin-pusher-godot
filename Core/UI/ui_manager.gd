@@ -20,12 +20,16 @@ func _ready():
 		print("Registration Complete")
 
 	collect_state_button.pressed.connect(GameController.store_game_state)
-	reload_state_button.pressed.connect(GameController.load_stored_game_state)
+	reload_state_button.pressed.connect(GameController.new_game)
 
 	update_level_spinners()
 
 	collect_state_for_level_spinner.value_changed.connect(GameController.set_level_to_save)
 	reload_state_for_level_spinner.value_changed.connect(GameController.set_level_to_load)
+
+	if OS.has_feature("web"):
+		collect_state_button.hide()
+		collect_state_for_level_spinner.hide()
 
 
 func update_level_spinners():

@@ -1,7 +1,9 @@
 class_name Game extends RefCounted
 
+const POCKET_START_VALUE: int = 20
+
 @export var coin_value: int = 2
-@export var pocket: int = 20
+@export var pocket: int = POCKET_START_VALUE
 var spent: int = 0
 var collected: int = 0
 
@@ -33,6 +35,12 @@ func end():
 	is_on = false
 	GameController.coin_spawned.disconnect(spend)
 	GameController.coin_collected.disconnect(collect)
+
+
+func reset():
+	pocket = POCKET_START_VALUE
+	spent = 0
+	collected = 0
 
 
 func can_spawn() -> bool:
