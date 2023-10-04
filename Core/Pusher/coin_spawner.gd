@@ -23,27 +23,29 @@ func random_spawn_position():
 	)
 
 
-func spawn_coin_randomly():
-	var spawn_position = random_spawn_position()
-	var coin = coin_scene.instantiate()
-	add_child(coin)
-	coin.global_position = spawn_position
-	GameController.coin_spawned.emit()
+func spawn_coin_randomly(force_spawn: bool = false):
+	if GameController.game.can_spawn() or force_spawn:
+		var spawn_position = random_spawn_position()
+		var coin = coin_scene.instantiate()
+		add_child(coin)
+		coin.global_position = spawn_position
+		GameController.coin_spawned.emit()
 
 
-func spawn_coin(spawn_position: Vector3, spawn_rotation: Vector3):
-	var coin = coin_scene.instantiate()
-	add_child(coin)
-	coin.global_position = spawn_position
-	coin.global_rotation = spawn_rotation
-	GameController.coin_spawned.emit()
+func spawn_coin(spawn_position: Vector3, spawn_rotation: Vector3, force_spawn: bool = false):
+	if GameController.game.can_spawn() or force_spawn:
+		var coin = coin_scene.instantiate()
+		add_child(coin)
+		coin.global_position = spawn_position
+		coin.global_rotation = spawn_rotation
+		GameController.coin_spawned.emit()
 
 
 func load_coins(state: GameState):
 	delete_all_coins()
 	var size = state.coin_positions.size()
 	for i in range(size):
-		spawn_coin(state.coin_positions[i], state.coin_rotations[i])
+		spawn_coin(state.coin_positions[i], state.coin_rotations[i], true)
 
 
 func delete_all_coins():
@@ -56,6 +58,6 @@ func _on_input_event(
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			for i in range(10):
-				spawn_coin_randomly()
+				spawn_coin_randomly(true)
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			delete_all_coins()

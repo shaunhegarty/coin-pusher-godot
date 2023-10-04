@@ -31,11 +31,6 @@ import_script/path=""
 _subresources={
 "nodes": {
 "PATH:Base": {
-"generate/physics": true,
-"physics/shape_type": 2
-},
-"PATH:PachinkoSpindles_031": {
-"generate/physics": true,
 "physics/shape_type": 2
 }
 }

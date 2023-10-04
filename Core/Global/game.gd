@@ -1,6 +1,6 @@
 class_name Game extends RefCounted
 
-const POCKET_START_VALUE: int = 20
+const POCKET_START_VALUE: int = 30
 
 @export var coin_value: int = 2
 @export var pocket: int = POCKET_START_VALUE
